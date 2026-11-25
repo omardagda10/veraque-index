@@ -1,0 +1,14 @@
+services:
+  veraque-index-seo:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PORT: ${PORT:-8000}
+    expose:
+      - "${PORT:-8000}"
+    # Opcional: montar el JSON de la Service Account en lugar de usar GOOGLE_SERVICE_ACCOUNT_JSON
+    # volumes:
+    #   - ./secrets/service-account.json:/run/secrets/service-account.json:ro
